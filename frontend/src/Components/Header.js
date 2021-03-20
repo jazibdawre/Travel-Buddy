@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './Navbar.css';
 import { Route, Link } from 'react-router-dom';
@@ -18,8 +19,9 @@ import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import './Header.css';
 
-const myAppName = 'LOST N FOUND';
+const myAppName = 'Travel Buddy';
 const myDescription = '';
 const myColor = '#343a40';
 
@@ -99,15 +101,15 @@ const Header = () => {
 
 	return (
 		<header>
-			<Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+			<Navbar expand="lg" collapseOnSelect className='navbar-style'>
 				<Side />
 
 				<Container>
 					<LinkContainer to="/">
-						<Navbar.Brand
-							style={{ marginLeft: 'auto', marginRight: 'auto' }}
+						<Navbar.Brand className='navbar-brand'
+							style={{ marginLeft: 'auto', marginRight: 'auto', color: '#ff8e43' }}
 						>
-							Lost N Found
+							{myAppName}
 						</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -130,7 +132,7 @@ const Header = () => {
 									title={userInfo.name}
 									id="username"
 								>
-									<LinkContainer to="/profile">
+									<LinkContainer to="/profile" style={{color: 'white'}}>
 										<NavDropdown.Item>
 											Profile
 										</NavDropdown.Item>
@@ -147,7 +149,7 @@ const Header = () => {
 								</LinkContainer>
 							)}
 							{userInfo && (
-								<NavDropdown title="Navigate" id="adminmenu">
+								<NavDropdown title="Navigate" id="adminmenu" style={{color: 'white'}}>
 									<LinkContainer to="/admin/productlist">
 										<NavDropdown.Item>
 											Products
