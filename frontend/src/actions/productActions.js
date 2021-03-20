@@ -34,36 +34,70 @@ export const listProducts = (keyword = '') => async (dispatch) => {
 			},
 		};
 
-		const { data } = await axios.post(
-			'http://localhost:5000/graphql',
-			JSON.stringify({
-				query: `{
-					searchLocation (searchTerm: "${keyword}") {
-					_id
-					name
-					image
-					category {
+		if (keyword && keyword.split(':').length == 2) {
+			const coordinates = keyword.split(':');
+			const { data } = await axios.post(
+				'http://localhost:5000/graphql',
+				JSON.stringify({
+					query: `{
+						getNearby (longitude: ${coordinates[1]}, latitude:  ${coordinates[0]}) {
 						_id
 						name
-					}
-					description
-					address {
-						state
-						country
+						image
+						category {
+							_id
+							name
+						}
+						description
+						address {
+							state
+							country
+						}
 					}
 				}
-			}
-			`,
-			}),
-			config
-		);
+				`,
+				}),
+				config
+			);
 
-		console.log(data);
+			console.log(data);
 
-		dispatch({
-			type: PRODUCT_LIST_SUCCESS,
-			payload: data.data.searchLocation,
-		});
+			dispatch({
+				type: PRODUCT_LIST_SUCCESS,
+				payload: data.data.getNearby,
+			});
+		} else {
+			const { data } = await axios.post(
+				'http://localhost:5000/graphql',
+				JSON.stringify({
+					query: `{
+						searchLocation (searchTerm: "${keyword}") {
+						_id
+						name
+						image
+						category {
+							_id
+							name
+						}
+						description
+						address {
+							state
+							country
+						}
+					}
+				}
+				`,
+				}),
+				config
+			);
+
+			console.log(data);
+
+			dispatch({
+				type: PRODUCT_LIST_SUCCESS,
+				payload: data.data.searchLocation,
+			});
+		}
 	} catch (error) {
 		dispatch({
 			type: PRODUCT_LIST_FAIL,
