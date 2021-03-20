@@ -3,9 +3,11 @@ import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import morgan from 'morgan';
+import Redis from 'ioredis';
 import cors from 'cors';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import paymentRouter from './routes/paymentRouter.js';
 import { verify } from './middleware/authMiddleware.js';
 import connectDB from './config/db.js';
 
@@ -19,6 +21,7 @@ dotenv.config();
 await connectDB();
 
 const app = express();
+const redis = new Redis();
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -38,13 +41,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(paymentRouter);
+
 app.use(
   '/graphql',
   graphqlHTTP((req, res, graphQLParams) => {
     return {
       schema: graphqlSchema,
       rootValue: graphqlResolvers,
-      context: { req },
+      context: { req, redis },
       graphiql: process.env.NODE_ENV === 'development' ? true : false,
     };
   })
