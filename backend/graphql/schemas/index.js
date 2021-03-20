@@ -17,6 +17,8 @@ export default buildSchema(`
         getUserById(userId: ID!): User!
         
         getCategories: [Category!]!
+
+        searchLocation(searchTerm: String!): [Location!]!
     }
 
     type rootMutation {

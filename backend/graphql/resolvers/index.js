@@ -15,11 +15,9 @@ import {
   createCategory,
   updateCategory,
   deleteCategory,
-  getSubCategories,
-  createSubCategory,
-  updateSubCategory,
-  deleteSubCategory,
 } from './category.js';
+
+import { searchLocation } from './search.js';
 
 export default {
   //user
@@ -37,4 +35,6 @@ export default {
   getCategories: getCategories,
   updateCategory: updateCategory,
   deleteCategory: deleteCategory,
+  //search
+  searchLocation: searchLocation,
 };
