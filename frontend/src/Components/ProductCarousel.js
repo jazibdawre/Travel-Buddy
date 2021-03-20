@@ -7,6 +7,7 @@ import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
 import a from '../screens/landing/img/1st-big-item.jpg';
 
+// added for development
 const cities=[
 	{
 		id:1,
@@ -26,7 +27,12 @@ const ProductCarousel = () => {
 
 	const productTopRated = useSelector((state) => state.productTopRated);
 	let { loading, error, products } = productTopRated;
+	// added for development
+	//-------------
     loading=false;
+	error=false;
+    //------------
+
 	useEffect(() => {
 		dispatch(listTopProducts());
 	}, [dispatch]);
