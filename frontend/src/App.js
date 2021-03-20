@@ -25,7 +25,7 @@ const App = () => {
 		<Router>
 			<Header />
 			
-			<main className="py-3">
+			<main className="py-3" style={{ paddingTop: '0rem !important', overflow: 'hidden'}}>
 			<Route path="/" component={Landing} exact />
 				<Container>
 					<Route path="/order/:id" component={OrderScreen} />
