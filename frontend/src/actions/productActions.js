@@ -109,6 +109,11 @@ export const listProductDetails = (id) => async (dispatch) => {
 						coordinates
 					}
 					rating
+					reviews {
+						name
+						rating
+						comment
+					}
 				}
 			}
 		`,

@@ -15,6 +15,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -38,6 +45,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Agra',
       state: 'Uttar Pradesh',
@@ -61,6 +75,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -84,6 +105,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Sahyadri',
       state: 'Maharashtra',
@@ -107,6 +135,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -130,6 +165,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',

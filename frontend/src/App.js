@@ -69,21 +69,6 @@ const App = () => {
 						component={HomeScreen}
 						exact
 					/>
-					<Route
-						path="/search/:filter"
-						component={HomeScreen}
-						exact
-					/>
-					<Route
-						path="/page/:pageNumber"
-						component={HomeScreen}
-						exact
-					/>
-					<Route
-						path="/search/:keyword/page/:pageNumber"
-						component={HomeScreen}
-						exact
-					/>
 				</Container>
 			</main>
 			<Footer />
