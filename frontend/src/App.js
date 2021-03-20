@@ -24,9 +24,9 @@ const App = () => {
 	return (
 		<Router>
 			<Header />
-			
-			<main style={{ paddingTop: '0rem !important', overflow: 'hidden'}}>
-			<Route path="/" component={Landing} exact />
+
+			<main style={{ paddingTop: '0rem !important', overflow: 'hidden' }}>
+				<Route path="/" component={HomeScreen} exact />
 				<Container>
 					<Route path="/order/:id" component={OrderScreen} />
 					<Route path="/shipping" component={ShippingScreen} />
@@ -79,7 +79,6 @@ const App = () => {
 						component={HomeScreen}
 						exact
 					/>
-					
 				</Container>
 			</main>
 			<Footer />

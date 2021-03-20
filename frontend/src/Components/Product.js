@@ -7,7 +7,8 @@ const Product = ({ product }) => {
 	return (
 		<Card className="my-3 p-3 rounded">
 			<Link to={`/product/${product._id}`}>
-				<Card.Img src={product.image} variant="top" />
+				{/* <Card.Img src={product.image} variant="top" /> */}
+				<Card.Img src="images/alexa.jpg" variant="top" />
 			</Link>
 
 			<Card.Body>
@@ -19,7 +20,9 @@ const Product = ({ product }) => {
 
 				<Card.Text as="div">{product.category.name}</Card.Text>
 
-				<Card.Text as="div">Finder: {product.user.name}</Card.Text>
+				<Card.Text as="div">
+					Location: {product.address.state},{product.address.country}
+				</Card.Text>
 			</Card.Body>
 		</Card>
 	);
