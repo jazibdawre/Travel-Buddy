@@ -27,6 +27,12 @@ const locationSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    address: {
+      city: String,
+      state: String,
+      country: String,
+      zipcode: Number,
+    },
     rating: {
       type: Number,
       required: true,
@@ -65,7 +71,7 @@ const locationSchema = mongoose.Schema(
 );
 
 // For geospatial processing
-productSchema.index({ location: '2dsphere' });
+locationSchema.index({ location: '2dsphere' });
 
 locationSchema.plugin(mongoose_fuzzy_searching, {
   fields: [

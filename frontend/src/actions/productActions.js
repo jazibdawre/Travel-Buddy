@@ -38,33 +38,18 @@ export const listProducts = (keyword = '') => async (dispatch) => {
 			'http://localhost:5000/graphql',
 			JSON.stringify({
 				query: `{
-				searchProduct (searchTerm: "${keyword}") {
+					searchLocation (searchTerm: "${keyword}") {
 					_id
 					name
-					user {
-						_id
-						name
-						phoneNo
-					}
 					image
-					brand {
-						_id
-						name
-					}
 					category {
 						_id
 						name
 					}
-					questions {
-						_id
-						question
-						ans
-						type
-					}
 					description
-					location {
-						type
-						coordinates
+					address {
+						state
+						country
 					}
 				}
 			}
@@ -77,7 +62,7 @@ export const listProducts = (keyword = '') => async (dispatch) => {
 
 		dispatch({
 			type: PRODUCT_LIST_SUCCESS,
-			payload: data.data.searchProduct,
+			payload: data.data.searchLocation,
 		});
 	} catch (error) {
 		dispatch({
@@ -104,45 +89,37 @@ export const listProductDetails = (id) => async (dispatch) => {
 			`http://localhost:5000/graphql`,
 			JSON.stringify({
 				query: ` {
-				getProductById (id: "${id}") {
+				getLocationById (id: "${id}") {
 					_id
 					name
-					user {
-						_id
-						name
-						phoneNo
-					}
 					image
-					brand {
-						_id
-						name
-					}
 					category {
 						_id
 						name
 					}
-					questions {
-						_id
-						question
-						ans
-						type
-					}
 					description
+					address {
+						city
+						state
+						country
+					}
+					food
+					attractions
 					location {
-						type
 						coordinates
 					}
+					rating
 				}
 			}
 		`,
 			}),
 			config
 		);
-		console.log(data.data.getProductById);
+		console.log(data.data.getLocationById);
 
 		dispatch({
 			type: PRODUCT_DETAILS_SUCCESS,
-			payload: data.data.getProductById[0],
+			payload: data.data.getLocationById[0],
 		});
 	} catch (error) {
 		dispatch({
@@ -212,7 +189,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
 			`http://localhost:5000/graphql`,
 			JSON.stringify({
 				query: ` 
-					mutation { createProduct (productInput: ${product}) {
+					mutation { createLocation (locationInput: ${product}) {
 					_id
 					name
 				}
@@ -224,7 +201,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
 
 		dispatch({
 			type: PRODUCT_CREATE_SUCCESS,
-			payload: data.data.createProduct,
+			payload: data.data.createLocation,
 		});
 	} catch (error) {
 		const message =
@@ -262,33 +239,18 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 			`http://localhost:5000/graphql`,
 			JSON.stringify({
 				mutation: ` {
-				updateProduct (productId: "${product._id}", updateProduct: "${product}") {
+				updateLocation (locationId: "${product._id}", updateLocation: "${product}") {
 					_id
 					name
-					user {
-						_id
-						name
-						phoneNo
-					}
 					image
-					brand {
-						_id
-						name
-					}
 					category {
 						_id
 						name
 					}
-					questions {
-						_id
-						question
-						ans
-						type
-					}
 					description
-					location {
-						type
-						coordinates
+					address {
+						state
+						country
 					}
 				}
 			}`,
@@ -371,27 +333,19 @@ export const listTopProducts = () => async (dispatch) => {
 			JSON.stringify({
 				query: `
 				{
-					getProducts {
+					getLocations {
 						_id
 						name
-						user {
-							_id
-							name
-						}
 						image
-						brand {
-							_id
-							name
-						}
 						category {
 							_id
 							name
 						}
-						subcategory {
-							_id
-							name
-						}
 						description
+						address {
+							state
+							country
+						}
 					}
 				}`,
 			}),
@@ -400,7 +354,7 @@ export const listTopProducts = () => async (dispatch) => {
 
 		dispatch({
 			type: PRODUCT_TOP_SUCCESS,
-			payload: data.data.getProducts,
+			payload: data.data.getLocations,
 		});
 	} catch (error) {
 		dispatch({

@@ -1,4 +1,4 @@
-import Location from '../models/locationModel.js';
+import Location from '../../models/locationModel.js';
 import { admin, loggedin } from '../../utils/verifyUser.js';
 
 const createLocation = async (args, req) => {
@@ -7,6 +7,7 @@ const createLocation = async (args, req) => {
       const location = new Location({
         name: args.locationInput.name,
         image: args.locationInput.image,
+        address: args.locationInput.address,
         rating: args.locationInput.rating,
         description: args.locationInput.description,
         location: args.locationInput.location,
@@ -24,28 +25,25 @@ const createLocation = async (args, req) => {
 };
 
 // get all locations
-// private
 // cached
 const getLocations = async (args, { req, redis }) => {
   try {
-    if (admin(req)) {
-      const locations = await redis.get('locations:all');
+    const locations = await redis.get('locations:all');
+
+    if (locations) {
+      return JSON.parse(locations);
+    } else {
+      const locations = await Location.find({}).populate('category');
 
       if (locations) {
-        return JSON.parse(locations);
+        redis.setex(
+          'locations:all',
+          process.env.SLOW_CACHE,
+          JSON.stringify(locations)
+        );
+        return locations;
       } else {
-        const locations = await Location.find({}).populate('category');
-
-        if (locations) {
-          redis.setex(
-            'locations:all',
-            process.env.SLOW_CACHE,
-            JSON.stringify(locations)
-          );
-          return locations;
-        } else {
-          throw new Error('Location does not exist.');
-        }
+        throw new Error('Location does not exist.');
       }
     }
   } catch (err) {
@@ -128,6 +126,7 @@ const updateLocation = async (args, { req, redis }) => {
       const newUpdatedLocation = {
         name: args.locationInput.name,
         image: args.locationInput.image,
+        address: args.locationInput.address,
         rating: args.locationInput.rating,
         description: args.locationInput.description,
         location: args.locationInput.location,

@@ -4,6 +4,10 @@ export const UserSchema = `
         details: String
         location: Location!
     }
+    
+    type Response {
+        msg: String!
+    }
 
     type User {
         _id: ID!

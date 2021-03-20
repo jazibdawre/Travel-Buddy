@@ -7,26 +7,26 @@ import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
 import a from '../screens/landing/img/1st-big-item.jpg';
 
-const cities=[
+const cities = [
 	{
-		id:1,
-		name:'Mumbai'
+		id: 1,
+		name: 'Mumbai',
 	},
 	{
-		id:2,
-		name:'London'
+		id: 2,
+		name: 'London',
 	},
 	{
-		id:3,
-		name:'USA'
+		id: 3,
+		name: 'USA',
 	},
-]
+];
 const ProductCarousel = () => {
 	const dispatch = useDispatch();
 
 	const productTopRated = useSelector((state) => state.productTopRated);
 	let { loading, error, products } = productTopRated;
-    loading=false;
+	loading = false;
 	useEffect(() => {
 		dispatch(listTopProducts());
 	}, [dispatch]);
@@ -37,12 +37,17 @@ const ProductCarousel = () => {
 		<Message variant="danger">{error}</Message>
 	) : (
 		<Carousel pause="hover" className="bg-dark">
-			{cities.map((city) => (
-				<Carousel.Item key={city.id}>
-					<Link to={`/product/${city.id}`}>
-						<Image src={a} alt={city.name} fluid />
+			{products.map((product) => (
+				<Carousel.Item key={product.id}>
+					<Link to={`/product/${product.id}`}>
+						{/* <Image src={product.image} alt={product.name} fluid /> */}
+						<Image
+							src="images/alexa.jpg"
+							alt={product.name}
+							fluid
+						/>
 						<Carousel.Caption className="carousel-caption">
-							<h2>{city.name}</h2>
+							<h2>{product.name}</h2>
 						</Carousel.Caption>
 					</Link>
 				</Carousel.Item>
