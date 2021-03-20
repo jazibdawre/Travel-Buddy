@@ -14,20 +14,14 @@ import { useParams } from 'react-router-dom';
 const HomeScreen = ({ match }) => {
 	const keyword = match.params.keyword || '';
 
-	const filter = match.params.filter || '';
-
 	const dispatch = useDispatch();
 
 	const productList = useSelector((state) => state.productList);
 	const { loading, error, products, page, pages } = productList;
 
 	useEffect(() => {
-		dispatch(listProducts(keyword, null));
+		dispatch(listProducts(keyword));
 	}, [dispatch, keyword]);
-
-	useEffect(() => {
-		dispatch(listProducts(null, filter));
-	}, [dispatch, filter]);
 
 	useEffect(() => {
 		console.log(keyword);
@@ -36,7 +30,7 @@ const HomeScreen = ({ match }) => {
 	return (
 		<>
 			<Meta />
-			{!keyword && !filter ? (
+			{!keyword ? (
 				<>
 					<About />
 					<div style={{ marginTop: '20px' }}></div>
