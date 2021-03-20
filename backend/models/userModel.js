@@ -1,6 +1,26 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+const expenseSchema = new mongoose.Schema(
+  {
+    cost: {
+      type: Number,
+      required: true,
+    },
+    details: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Location',
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -25,6 +45,7 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    expenses: [expenseSchema],
   },
   {
     timestamps: true,

@@ -187,6 +187,41 @@ const updateUser = async (args, { req, redis }) => {
   }
 };
 
+//add expense
+//private
+const addExpenses = async (args, req) => {
+  try {
+    if (loggedin(req)) {
+      const user = await User.find({ _id: req.user._id });
+      if (user) {
+        let expenses = user[0].expenses;
+
+        const expense = {
+          cost: args.expenseInput.cost,
+          details: args.expenseInput.rating,
+          location: args.expenseInput.location,
+        };
+
+        expenses.push(expense);
+
+        const updateduser = {
+          expenses: expenses,
+        };
+
+        await user.findByIdAndUpdate(req.user._id, {
+          $set: updateduser,
+        });
+
+        const newUpdateduser = await User.findById(req.user._id);
+        return newUpdateduser;
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 export {
   authUser,
   registerUser,
@@ -196,4 +231,5 @@ export {
   deleteUser,
   getUserById,
   updateUser,
+  addExpenses,
 };
