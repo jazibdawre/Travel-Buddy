@@ -6,7 +6,9 @@ import morgan from 'morgan';
 import Redis from 'ioredis';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
-
+import cookieParser from 'cookie-parser';
+import session  from 'express-session';
+import facebookStrategy  from 'passport-facebook'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import paymentRouter from './routes/paymentRouter.js';
 import { verify } from './middleware/authMiddleware.js';
@@ -21,6 +23,8 @@ import authRoutes from './routes/auth-routes.js';  //
 import profileRoutes from './routes/profile-routes.js';  //
 import keys from './config/keys.js';
 import passport from 'passport'
+import facebookauthRoutes from './routes/auth-routes-facebook.js'; //
+import facebookprofileRoutes from './routes/profile-routes-facebook.js'; //
 
 dotenv.config();
 
@@ -94,7 +98,23 @@ app.use(passport.session());
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 
+
 // Google OAuth end
+
+// Facebook OAuth Start
+
+app.use(session({ 
+  secret: 'ilovescotchscotchyscotchscotch',    
+  resave: true,
+  saveUninitialized: true 
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+
+app.use('/facebookauth', authRoutes);
+app.use('/facebookprofile', profileRoutes);
+
+// Facebook OAuth End
 
 const PORT = process.env.PORT || 5000;
 
