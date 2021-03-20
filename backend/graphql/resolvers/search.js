@@ -11,3 +11,23 @@ export const searchLocation = async (args, { req, redis }) => {
     return locs;
   }
 };
+
+export const getNearby = async (args, { req, redis }) => {
+  const locs = await Location.find({
+    location: {
+      $near: {
+        $maxDistance: 1000,
+        $geometry: {
+          type: 'Point',
+          coordinates: [args.longitude, args.latitude],
+        },
+      },
+    },
+  }).populate('category');
+
+  if (args.searchTerm) {
+    return locs.filter((prod) => prod._doc.confidenceScore > 7);
+  } else {
+    return locs;
+  }
+};
