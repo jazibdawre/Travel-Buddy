@@ -16,10 +16,10 @@ import { graphqlHTTP } from 'express-graphql';
 import graphqlSchema from './graphql/schemas/index.js';
 import graphqlResolvers from './graphql/resolvers/index.js';
 
-import authRoutes from './routes/auth-routes';  //
-import profileRoutes from './routes/profile-routes';  //
-import passportSetup from './config/passport-setup';  //
-import keys from './config/keys'; //
+// import authRoutes from './routes/auth-routes';  //
+// import profileRoutes from './routes/profile-routes';  //
+// import passportSetup from './config/passport-setup';  //
+// import keys from './config/keys'; //
 
 dotenv.config();
 
@@ -80,18 +80,20 @@ app.use(errorHandler);
 
 // Google OAuth Start
 
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
-}))
+// app.use(
+//   cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [keys.session.cookieKey],
+//   })
+// );
 
-//Initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
-app.use('/auth', authRoutes);
-app.use('/profile', profileRoutes);
+// //Initialize passport
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use('/auth', authRoutes);
+// app.use('/profile', profileRoutes);
 
-// Google OAuth end
+// // Google OAuth end
 
 const PORT = process.env.PORT || 5000;
 

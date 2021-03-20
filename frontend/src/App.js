@@ -70,6 +70,11 @@ const App = () => {
 						exact
 					/>
 					<Route
+						path="/search/:filter"
+						component={HomeScreen}
+						exact
+					/>
+					<Route
 						path="/page/:pageNumber"
 						component={HomeScreen}
 						exact
