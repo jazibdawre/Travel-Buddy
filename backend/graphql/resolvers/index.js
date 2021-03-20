@@ -28,7 +28,7 @@ import {
   getLocationReviews,
 } from './location.js';
 
-import { searchLocation } from './search.js';
+import { searchLocation, getNearby } from './search.js';
 
 export default {
   //user
@@ -57,4 +57,5 @@ export default {
   getLocationReviews,
   //search
   searchLocation: searchLocation,
+  getNearby: getNearby,
 };

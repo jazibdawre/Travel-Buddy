@@ -7,5 +7,5 @@ const googleSchema = new Schema({
     thumbnail: String
 })
 
-const Googler = mongoose.model('googler', googleSchema);
-module.exports = Googler;
+export const Googler = mongoose.model('googler', googleSchema);
+// module.exports = Googler;

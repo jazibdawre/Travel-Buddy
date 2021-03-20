@@ -25,6 +25,7 @@ export default buildSchema(`
         getLocationReviews(locationId: ID!): [review]!
 
         searchLocation(searchTerm: String!): [Location!]!
+        getNearby(longitude: Float!, latitude:Float!): [Location!]!
     }
 
     type rootMutation {
