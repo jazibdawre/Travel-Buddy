@@ -125,9 +125,8 @@ function Side() {
 			myFilter.category !== '' ||
 			myFilter.brand !== ''
 		) {
-			history.push(
-				`/search/filters=${myFilter.category}+${myFilter.brand}+${pickUp.lat}+${pickUp.lng}`
-			);
+			const filter = `${pickUp.lat}:${pickUp.lng}`;
+			history.push(`/search/${filter}`);
 		}
 	}, [myFilter, pickUp]);
 
