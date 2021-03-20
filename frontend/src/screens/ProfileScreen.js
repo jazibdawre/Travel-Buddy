@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Form, Button, Row, Col } from 'react-bootstrap';
+import { Table, Form, Button, Row, Col, Card, Accordion } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -7,6 +7,11 @@ import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import {
+	listTopProducts,
+	deleteProduct,
+	createProduct,
+} from '../actions/productActions';
 
 const ProfileScreen = ({ location, history }) => {
 	const [name, setName] = useState('');
@@ -54,6 +59,31 @@ const ProfileScreen = ({ location, history }) => {
 			);
 		}
 	};
+
+	const deleteHandler = (id) => {
+		if (window.confirm('Are you sure')) {
+			dispatch(deleteProduct(id));
+		}
+	};
+
+	const createProductHandler = () => {
+		//dispatch(createProduct());
+		history.push(`/admin/product/create`);
+	};
+
+	
+	const products = [
+		{
+			_id: '1',
+			name: 'Mumbai',
+			user: {
+				name: 'Aditya'
+			},
+			category: {
+				name: 'Game'
+			}
+		}
+	]
 
 	return (
 		<Row>
@@ -120,12 +150,34 @@ const ProfileScreen = ({ location, history }) => {
 			</Col>
 			<Col md={9}>
 				<h2>My Orders</h2>
-				{loadingOrders ? (
+				{false ? (
 					<Loader />
-				) : errorOrders ? (
+				) : false ? (
 					<Message variant="danger">{errorOrders}</Message>
 				) : (
-					<Table
+					<>
+					<Accordion defaultActiveKey="0">
+  <Card>
+    <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+        Mumbai
+      </Accordion.Toggle>
+    </Card.Header>
+    <Accordion.Collapse eventKey="0">
+											<Card.Body>
+												<div className='container'>
+													Expenses
+												
+					<Button className="my-3 btn-sm align-self-end" onClick={createProductHandler}>
+						<i className="fas fa-plus"></i> Create Product
+					</Button>
+				
+												</div>
+												
+													
+												
+	
+												<Table
 						striped
 						bordered
 						hover
@@ -135,55 +187,58 @@ const ProfileScreen = ({ location, history }) => {
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>DATE</th>
-								<th>TOTAL</th>
-								<th>PAID</th>
-								<th>DELIVERED</th>
+								<th>NAME</th>
+								<th>PRICE</th>
+								<th>CATEGORY</th>
+								<th>BRAND</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							{orders.map((order) => (
-								<tr key={order._id}>
-									<td>{order._id}</td>
-									<td>{order.createdAt.substring(0, 10)}</td>
-									<td>{order.totalPrice}</td>
-									<td>
-										{order.isPaid ? (
-											order.paidAt.substring(0, 10)
-										) : (
-											<i
-												className="fas fa-times"
-												style={{ color: 'red' }}
-											></i>
-										)}
-									</td>
-									<td>
-										{order.isDelivered ? (
-											order.deliveredAt.substring(0, 10)
-										) : (
-											<i
-												className="fas fa-times"
-												style={{ color: 'red' }}
-											></i>
-										)}
-									</td>
+							{products.map((product) => (
+								<tr key={product._id}>
+									<td>{product._id}</td>
+									<td>{product.name}</td>
+									<td>{product.user.name}</td>
+									<td>{product.category.name}</td>
 									<td>
 										<LinkContainer
-											to={`/order/${order._id}`}
+											to={`/admin/product/${product._id}/edit`}
 										>
 											<Button
-												className="btn-sm"
 												variant="light"
+												className="btn-sm"
 											>
-												Details
+												<i className="fas fa-edit"></i>
 											</Button>
 										</LinkContainer>
+										<Button
+											variant="danger"
+											className="btn-sm"
+											onClick={() => { }
+											}
+										>
+											<i className="fas fa-trash"></i>
+										</Button>
 									</td>
 								</tr>
 							))}
 						</tbody>
-					</Table>
+								</Table></Card.Body>
+    </Accordion.Collapse>
+  </Card>
+  <Card>
+    <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="1">
+        Click me!
+      </Accordion.Toggle>
+    </Card.Header>
+    <Accordion.Collapse eventKey="1">
+      <Card.Body>Hello! I'm another body</Card.Body>
+    </Accordion.Collapse>
+  </Card>
+</Accordion>
+					</>
 				)}
 			</Col>
 		</Row>

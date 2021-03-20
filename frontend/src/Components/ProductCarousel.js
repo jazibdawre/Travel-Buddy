@@ -7,20 +7,6 @@ import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
 import a from '../screens/landing/img/1st-big-item.jpg';
 
-const cities = [
-	{
-		id: 1,
-		name: 'Mumbai',
-	},
-	{
-		id: 2,
-		name: 'London',
-	},
-	{
-		id: 3,
-		name: 'USA',
-	},
-];
 const ProductCarousel = () => {
 	const dispatch = useDispatch();
 
