@@ -16,11 +16,19 @@ export const LocationSchema = `
         user: ID!,
     }
 
+    type address {
+      city: String,
+      state: String!,
+      country: String!,
+      zipcode: Int,
+    }
+
     type Location {
         _id: ID!
         name: String!
         image: String!
-        rating: Number
+        address: address!
+        rating: Int
         category: Category!
         keywords: [String!]!
         description: String!
@@ -48,9 +56,17 @@ export const LocationSchema = `
         user: ID!,
     }
 
+    input addressInput {
+        city: String,
+        state: String!,
+        country: String!,
+        zipcode: Int,
+    }
+
     input LocationInput {
         name: String!
         image: String!
+        address: addressInput!
         brand: String!
         category: ID!
         keywords: [String!]!
@@ -65,6 +81,7 @@ export const LocationSchema = `
     input updateLocation {
         name: String!
         image: String!
+        address: addressInput!
         brand: String!
         category: ID!
         keywords: [String!]!

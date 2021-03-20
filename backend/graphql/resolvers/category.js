@@ -1,5 +1,4 @@
 import Category from '../../models/categoryModel.js';
-import SubCategory from '../../models/subcategoryModel.js';
 import { loggedin, admin } from '../../utils/verifyUser.js';
 
 // Category
