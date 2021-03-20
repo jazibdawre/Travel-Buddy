@@ -22,7 +22,6 @@ import graphqlResolvers from './graphql/resolvers/index.js';
 // import keys from './config/keys'; //
 
 dotenv.config();
-
 await connectDB();
 
 const app = express();
