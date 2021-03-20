@@ -320,7 +320,7 @@ const ProductScreen = ({ history, match }) => {
 							}}
 						>
 							<Weather
-								location={pickUpInit}
+								location={pickUp}
 								name={product.name}
 							/>
 						</Col>
