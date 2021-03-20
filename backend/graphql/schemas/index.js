@@ -17,6 +17,12 @@ export default buildSchema(`
         getUserById(userId: ID!): User!
         
         getCategories: [Category!]!
+        
+        getLocations: [Location!]!
+        getLocationByCategory(categoryId: ID!): [Location!]!
+        getLocationById(id: ID!): [Location!]!
+        deleteLocation(id: ID!): Location!
+        getLocationReviews(locationId: ID!): [review]!
 
         searchLocation(searchTerm: String!): [Location!]!
     }
@@ -31,6 +37,10 @@ export default buildSchema(`
         createCategory(name: String!): Category!
         updateCategory(name: String!, newName: String!): Response!
         deleteCategory(name: String!): Response!
+
+        createLocation(locationInput: LocationInput):  Location!
+        updateLocation(locationId: ID!, updateLocation: updateLocation): Location!
+        createLocationReview(locationId: ID!, review: reviewInput!): Location!
     }
 
     schema {

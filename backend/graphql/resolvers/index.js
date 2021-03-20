@@ -17,6 +17,17 @@ import {
   deleteCategory,
 } from './category.js';
 
+import {
+  createLocation,
+  getLocations,
+  getLocationByCategory,
+  getLocationById,
+  updateLocation,
+  deleteLocation,
+  createLocationReview,
+  getLocationReviews,
+} from './location.js';
+
 import { searchLocation } from './search.js';
 
 export default {
@@ -35,6 +46,15 @@ export default {
   getCategories: getCategories,
   updateCategory: updateCategory,
   deleteCategory: deleteCategory,
+  //locations
+  createLocation,
+  getLocations,
+  getLocationByCategory,
+  getLocationById,
+  updateLocation,
+  deleteLocation,
+  createLocationReview,
+  getLocationReviews,
   //search
   searchLocation: searchLocation,
 };
