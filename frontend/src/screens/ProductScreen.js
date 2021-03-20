@@ -27,6 +27,7 @@ import axios from 'axios';
 import MyMap from '../components/map/map2';
 import ViewApp from '../components/ViewApp';
 import Weather from '../components/Weather';
+import PieChartBuilder from '../components/PieChartBuilder';
 
 const myAppName = 'LOST N FOUND';
 const myDescription = '';

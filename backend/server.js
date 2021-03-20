@@ -27,7 +27,6 @@ import facebookauthRoutes from './routes/auth-routes-facebook.js'; //
 import facebookprofileRoutes from './routes/profile-routes-facebook.js'; //
 
 dotenv.config();
-
 await connectDB();
 
 const app = express();
