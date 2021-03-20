@@ -6,7 +6,7 @@ const locations = [
     category: 'City',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [72.8773928, 19.0759899],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -15,6 +15,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -29,7 +36,7 @@ const locations = [
     category: 'Historical Place',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [78.0421, 27.1751],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -38,6 +45,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Agra',
       state: 'Uttar Pradesh',
@@ -52,7 +66,7 @@ const locations = [
     category: 'Mountains',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [83.9311, 28.5983],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -61,6 +75,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -75,7 +96,7 @@ const locations = [
     category: 'Mountains',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [77.0667, 10.1667],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -84,6 +105,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Sahyadri',
       state: 'Maharashtra',
@@ -98,7 +126,7 @@ const locations = [
     category: 'Beaches',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [72.8773928, 19.0759899],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -107,6 +135,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',
@@ -121,7 +156,7 @@ const locations = [
     category: 'Art',
     location: {
       type: 'Point',
-      coordinates: [19.076, 72.8777],
+      coordinates: [72.8773928, 19.0759899],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Art'],
@@ -130,6 +165,13 @@ const locations = [
       note: 'Slightly Sunny',
       temperature: '22 C',
     },
+    reviews: [
+      {
+        name: 'John',
+        rating: 4,
+        comment: 'Good place to visit!',
+      },
+    ],
     address: {
       city: 'Mumbai',
       state: 'Maharashtra',

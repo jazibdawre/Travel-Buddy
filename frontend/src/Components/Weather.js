@@ -9,7 +9,7 @@ const Weather = ({location, name}) => {
     lang: 'en',
     unit: 'metric', // values are (metric, standard, imperial)
   });
-   // console.log(location.lat);
+   console.log(location.lat);
 
 
   return (

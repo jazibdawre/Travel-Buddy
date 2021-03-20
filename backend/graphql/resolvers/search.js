@@ -13,10 +13,11 @@ export const searchLocation = async (args, { req, redis }) => {
 };
 
 export const getNearby = async (args, { req, redis }) => {
+  console.log(args.longitude, args.latitude);
   const locs = await Location.find({
     location: {
       $near: {
-        $maxDistance: 1000,
+        $maxDistance: 5000,
         $geometry: {
           type: 'Point',
           coordinates: [args.longitude, args.latitude],

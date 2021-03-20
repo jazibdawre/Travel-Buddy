@@ -5,6 +5,10 @@ let secret = {
     },
     session: {
         cookieKey: 'kanaaddeshpandeisawesomeasalways'
+    },
+    facebook: {
+        clientID        : "183784673329881",
+        clientSecret    : "213266aef668f7d7d9b13d3e7d69923b"
     }
 };
 
