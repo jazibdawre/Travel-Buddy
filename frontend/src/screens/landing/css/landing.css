@@ -12,6 +12,7 @@ p {
   body { 
     position: relative; /* we need this for the scrollspy */ 
     font-size: 14px;
+    height: inherit;
   }
   
   a { color: #3CC; }

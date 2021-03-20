@@ -5,13 +5,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
 import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
+import a from '../screens/landing/img/1st-big-item.jpg';
 
+const cities=[
+	{
+		id:1,
+		name:'Mumbai'
+	},
+	{
+		id:2,
+		name:'London'
+	},
+	{
+		id:3,
+		name:'USA'
+	},
+]
 const ProductCarousel = () => {
 	const dispatch = useDispatch();
 
 	const productTopRated = useSelector((state) => state.productTopRated);
-	const { loading, error, products } = productTopRated;
-
+	let { loading, error, products } = productTopRated;
+    loading=false;
 	useEffect(() => {
 		dispatch(listTopProducts());
 	}, [dispatch]);
@@ -22,12 +37,12 @@ const ProductCarousel = () => {
 		<Message variant="danger">{error}</Message>
 	) : (
 		<Carousel pause="hover" className="bg-dark">
-			{products.map((product) => (
-				<Carousel.Item key={product._id}>
-					<Link to={`/product/${product._id}`}>
-						<Image src={product.image} alt={product.name} fluid />
+			{cities.map((city) => (
+				<Carousel.Item key={city.id}>
+					<Link to={`/product/${city.id}`}>
+						<Image src={a} alt={city.name} fluid />
 						<Carousel.Caption className="carousel-caption">
-							<h2>{product.name}</h2>
+							<h2>{city.name}</h2>
 						</Carousel.Caption>
 					</Link>
 				</Carousel.Item>
