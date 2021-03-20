@@ -98,9 +98,12 @@ const Header = () => {
 	const logoutHandler = () => {
 		dispatch(logout());
 	};
-
+    const headerStyle={
+		display:'flex',
+		justifyContent:'space-between'
+	}
 	return (
-		<header>
+		<header style={{headerStyle}}>
 			<Navbar expand="lg" collapseOnSelect className='navbar-style'>
 				<Side />
 
@@ -122,7 +125,7 @@ const Header = () => {
 
 						<Nav className="ml-auto">
 							{/* <LinkContainer to="/cart"> */}
-							<Nav.Link onClick={() => handleDonate()}>
+							<Nav.Link onClick={() => handleDonate()} style={{color:'#ff7d27'}}>
 								<i className="fas fa-donate"></i> Donate
 							</Nav.Link>
 							{/* </LinkContainer> */}
@@ -142,7 +145,7 @@ const Header = () => {
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
-								<LinkContainer to="/login">
+								<LinkContainer to="/login" style={{color:'#ff7d27'}}>
 									<Nav.Link>
 										<i className="fas fa-user"></i> Sign In
 									</Nav.Link>

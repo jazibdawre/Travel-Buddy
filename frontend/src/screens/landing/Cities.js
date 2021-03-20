@@ -2,15 +2,17 @@ import React from 'react'
 import City from './City'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
-const cities=[1,2,3,4,5,6];
+import ProductCarousel from '../../components/ProductCarousel';
+
 
 function Cities() {
     return (
         <React.Fragment>
             <h1 style={{textAlign:'center',color:'#ff7d27'}}>Top Cities Of world</h1>
-            <Grid container spacing={2}>
+            <ProductCarousel />
+            {/* <Grid container spacing={2}>
                {cities.map(city=><City key={city} city={city} />)}
-            </Grid>
+            </Grid> */}
         </React.Fragment>
     )
 }
