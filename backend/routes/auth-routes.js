@@ -1,4 +1,3 @@
-// import { authenticate } from 'passport';
 import passport from 'passport';
 import express from 'express';
 const router = express.Router();
@@ -29,3 +28,4 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 });
 
 export default router;
+
