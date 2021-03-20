@@ -9,6 +9,13 @@ export const LocationSchema = `
         temperature: String!
     }
 
+    type review {
+        name: String!,
+        rating: Int!,
+        comment: String!,
+        user: ID!,
+    }
+
     type Location {
         _id: ID!
         name: String!
@@ -18,8 +25,10 @@ export const LocationSchema = `
         keywords: [String!]!
         description: String!
         location: location!
+        attractions: [String!]
+        food: [String!]
         weather: weather!
-        reviews: [Review!]!
+        reviews: [review!]!
     }
 
     input locationInput {
@@ -32,6 +41,13 @@ export const LocationSchema = `
         temperature: String!
     }
 
+    input reviewInput {
+        name: String!,
+        rating: Int!,
+        comment: String!,
+        user: ID!,
+    }
+
     input LocationInput {
         name: String!
         image: String!
@@ -40,8 +56,10 @@ export const LocationSchema = `
         keywords: [String!]!
         description: String!
         location: locationInput!
+        attractions: [String!]
+        food: [String!]
         weather: weatherInput!
-        reviews: [ReviewInput!]!
+        reviews: [reviewInput!]!
     }
 
     input updateLocation {
@@ -52,7 +70,9 @@ export const LocationSchema = `
         keywords: [String!]!
         description: String!
         location: locationInput!
+        attractions: [String!]
+        food: [String!]
         weather: weatherInput!
-        reviews: [ReviewInput!]!
+        reviews: [reviewInput!]!
     }
 `;

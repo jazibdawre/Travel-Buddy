@@ -45,6 +45,8 @@ const locationSchema = mongoose.Schema(
       type: { type: String, default: 'Point' },
       coordinates: [],
     },
+    attractions: [String],
+    food: [String],
     weather: {
       note: {
         type: String,
