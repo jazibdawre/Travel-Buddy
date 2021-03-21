@@ -12,7 +12,7 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-	title: 'Welcome To Lost N Found',
+	title: 'Welcome To Travel Buddy',
 	description: 'We help people find their stuff',
 	keywords: 'lost, found, shop',
 };
