@@ -15,6 +15,7 @@ const createLocation = async (args, req) => {
         location: args.locationInput.location,
         weather: args.locationInput.weather,
         attractions: args.locationInput.attractions,
+        specialities: args.locationInput.specialities,
         food: args.locationInput.food,
       });
       const res = await location.save();
@@ -162,6 +163,7 @@ const updateLocation = async (args, { req, redis }) => {
         location: args.locationInput.location,
         weather: args.locationInput.weather,
         attractions: args.locationInput.attractions,
+        specialities: args.locationInput.specialities,
         food: args.locationInput.food,
       };
 
