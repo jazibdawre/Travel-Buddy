@@ -26,6 +26,7 @@ import {
   deleteLocation,
   createLocationReview,
   getLocationReviews,
+  getmyLocations,
 } from './location.js';
 
 import { searchLocation, getNearby } from './search.js';
@@ -55,6 +56,7 @@ export default {
   deleteLocation,
   createLocationReview,
   getLocationReviews,
+  getmyLocations,
   //search
   searchLocation: searchLocation,
   getNearby: getNearby,
