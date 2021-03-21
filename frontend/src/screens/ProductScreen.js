@@ -28,98 +28,13 @@ import MyMap from '../components/map/map2';
 import ViewApp from '../components/ViewApp';
 import Weather from '../components/Weather';
 
-const myAppName = 'LOST N FOUND';
+const myAppName = 'Travel Buddy';
 const myDescription = '';
 const myColor = '#343a40';
-
-const paymentHandler = async (amnt) => {
-	const orderAmount = amnt;
-	const API_URL = 'http://localhost:5000/';
-	// e.preventDefault();
-	const orderUrl = `${API_URL}order`;
-	const response = await axios.get(orderUrl, {
-		params: { amount: orderAmount },
-	});
-	const { data } = response;
-	const options = {
-		key: process.env.RAZOR_PAY_TEST_KEY,
-		name: myAppName,
-		description: myDescription,
-		order_id: data.id,
-
-		handler: async (response) => {
-			try {
-				const paymentId = response.razorpay_payment_id;
-				const url = `${API_URL}capture/${paymentId}`;
-				const captureResponse = await axios.post(url, {});
-				console.log(captureResponse.data);
-			} catch (err) {
-				console.log(err);
-			}
-		},
-		theme: {
-			color: myColor,
-		},
-	};
-	const rzp1 = new window.Razorpay(options);
-	rzp1.open();
-};
-
-const handleGift = () => {
-	Swal.mixin({
-		input: 'number',
-		confirmButtonText: 'Pay &rarr;',
-		allowOutsideClick: false,
-		allowEscapeKey: false,
-		// progressSteps: ['1']
-	})
-		.queue([
-			{
-				title: 'Show your love',
-				text: 'Enter the amount',
-			},
-		])
-		.then((result) => {
-			if (result.value) {
-				const answers = result.value;
-				console.log(answers[0]);
-				paymentHandler(answers[0]);
-			}
-		});
-};
-
-let products = {
-	name: 'Taj Mahal',
-	image:
-		'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
-	description: 'Taj Mahal, Agra',
-	category: 'Historical Place',
-	location: {
-		type: 'Point',
-		coordinates: [19.076, 72.8777],
-	},
-	rating: 4,
-	attractions: ['Fair', 'History', 'Art'],
-	food: ['Indian'],
-	weather: {
-		note: 'Slightly Sunny',
-		temperature: '22 C',
-	},
-	address: {
-		city: 'Agra',
-		state: 'Uttar Pradesh',
-		country: 'India',
-		zipcode: 123456,
-	},
-};
 
 const ProductScreen = ({ history, match }) => {
 	const pickUpInit = { address: '', lat: 19.076, lng: 72.8777 };
 	const [pickUp, setPickUp] = useState(pickUpInit);
-
-	//Email id of User Logged In
-	const [userName, setUsername] = useState('');
-	const founder = '';
 
 	const [qty, setQty] = useState(1);
 	const [rating, setRating] = useState(0);
@@ -153,10 +68,6 @@ const ProductScreen = ({ history, match }) => {
 		}
 	}, [dispatch, match, successProductReview]);
 
-	const addToCartHandler = () => {
-		history.push(`/cart/${match.params.id}?qty=${qty}`);
-	};
-
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -170,14 +81,10 @@ const ProductScreen = ({ history, match }) => {
 	useEffect(() => {
 		if (product && product.location && product.location.coordinates)
 			setPickUp({
-				lat: product.location.coordinates[0],
-				lng: product.location.coordinates[1],
+				lat: product.location.coordinates[1],
+				lng: product.location.coordinates[0],
 			});
 	}, [product]);
-
-	const handleChat = (call) => {
-		window.location.href = `tel:+${call}`;
-	};
 
 	return (
 		<>
@@ -318,10 +225,7 @@ const ProductScreen = ({ history, match }) => {
 								justifyContent: 'flex-end',
 							}}
 						>
-							<Weather
-								location={pickUpInit}
-								name={product.name}
-							/>
+							<Weather location={pickUp} name={product.name} />
 						</Col>
 					</Row>
 					<Row>
