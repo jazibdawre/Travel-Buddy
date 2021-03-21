@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import GoogleButton from 'react-google-button';
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
+import FacebookButton from '../components/FacebookButton';
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -100,6 +102,9 @@ const RegisterScreen = ({ location, history }) => {
         </Button>
       </Form>
 
+      <GoogleButton style={{margin: '2rem', width: '80%'}}
+  onClick={() => { console.log('Google button clicked') }}
+      />
       <Row className='py-3'>
         <Col>
           Have an Account?{' '}
@@ -109,6 +114,7 @@ const RegisterScreen = ({ location, history }) => {
         </Col>
       </Row>
     </FormContainer>
+    
   )
 }
 
