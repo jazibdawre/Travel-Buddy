@@ -20,6 +20,7 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import Landing from './screens/landing/Landing';
 import Translate from './screens/Translate';
+import Expense from './screens/Expense';
 
 const App = () => {
 	return (
@@ -88,6 +89,11 @@ const App = () => {
 					<Route
 						path='/translate'
 						component={Translate}
+						exact
+					/>
+					<Route
+						path='/expense/create'
+						component={Expense}
 						exact
 					/>
 				</Container>

@@ -13,8 +13,6 @@ const DEFUALT_LONGITUDE = 72.8777;
 function MyMap(props) {
   const pickUp = props.pU;
   const setPickUp = props.sPU;
-  const drop = props.d;
-  const setDrop = props.sD;
   const isMapInit = props.mI;
   const setMapInit = props.sMI;
 
@@ -31,10 +29,7 @@ function MyMap(props) {
     iconUrl: 'https://icon-library.com/images/google-maps-person-icon/google-maps-person-icon-6.jpg',
     iconSize: [50, 50]
   });
-  const driver = new Icon({
-    iconUrl: 'https://library.kissclipart.com/20180916/bye/kissclipart-home-location-icon-clipart-computer-icons-map-clip-d86bef193a5f1c10.png',
-    iconSize: [50, 50]
-  });
+
 
   return (
     <React.Fragment>
@@ -61,7 +56,7 @@ function MyMap(props) {
         position="topright" 
         provider="OpenStreetMap" 
         openSearchOnLoad={true} 
-        inputPlaceholder="Where did you find the item"
+        inputPlaceholder="Location of Travel Destination"
         closeResultsOnClick={true}
         zoom={14}
         search={pickUp.info}
@@ -73,23 +68,7 @@ function MyMap(props) {
           // setStep((prev) => prev+1);
         }}
         />
-        <ReactLeafletSearch 
-        className="custom-style"
-        position="topright" 
-        provider="OpenStreetMap" 
-        openSearchOnLoad={true} 
-        inputPlaceholder="Enter your location" 
-        closeResultsOnClick={true}
-        zoom={12}
-        showPopup={false}
-        showMarker={true}
-        markerIcon={driver}
-        onChange={(e) => {
-          setMapInit(true);
-          setDrop({address: e.info, lat: e.latLng.lat, lng: e.latLng.lng});
-          // setStep((prev) => prev+1);
-        }}
-        />
+        
       </React.Fragment>
       {/* } */}
 
@@ -103,7 +82,7 @@ function MyMap(props) {
 
       {/* Path */}
       {isMapInit && 
-      <Routing map={map} pickUp={pickUp} drop={drop} />}
+      <Routing map={map} pickUp={pickUp}/>}
       
     </Map>
     </React.Fragment>
