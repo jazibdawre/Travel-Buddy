@@ -98,19 +98,24 @@ const Header = () => {
 	const logoutHandler = () => {
 		dispatch(logout());
 	};
-    const headerStyle={
-		display:'flex',
-		justifyContent:'space-between'
-	}
+	const headerStyle = {
+		display: 'flex',
+		justifyContent: 'space-between',
+	};
 	return (
-		<header style={{headerStyle}}>
-			<Navbar expand="lg" collapseOnSelect className='navbar-style'>
+		<header style={{ headerStyle }}>
+			<Navbar expand="lg" collapseOnSelect className="navbar-style">
 				<Side />
 
 				<Container>
 					<LinkContainer to="/">
-						<Navbar.Brand className='navbar-brand'
-							style={{ marginLeft: 'auto', marginRight: 'auto', color: '#ff8e43' }}
+						<Navbar.Brand
+							className="navbar-brand"
+							style={{
+								marginLeft: 'auto',
+								marginRight: 'auto',
+								color: '#ff8e43',
+							}}
 						>
 							{myAppName}
 						</Navbar.Brand>
@@ -125,7 +130,10 @@ const Header = () => {
 
 						<Nav className="ml-auto">
 							{/* <LinkContainer to="/cart"> */}
-							<Nav.Link onClick={() => handleDonate()} style={{color:'#ff8e43'}}>
+							<Nav.Link
+								onClick={() => handleDonate()}
+								style={{ color: '#ff8e43' }}
+							>
 								<i className="fas fa-donate"></i> Donate
 							</Nav.Link>
 							{/* </LinkContainer> */}
@@ -134,9 +142,12 @@ const Header = () => {
 								<NavDropdown
 									title={userInfo.name}
 									id="username"
-									style={{color: '#ff8e43 '}}
+									style={{ color: '#ff8e43 ' }}
 								>
-									<LinkContainer to="/profile" style={{color: '#ff8e43 '}}>
+									<LinkContainer
+										to="/profile"
+										style={{ color: '#ff8e43 ' }}
+									>
 										<NavDropdown.Item>
 											Profile
 										</NavDropdown.Item>
@@ -146,28 +157,28 @@ const Header = () => {
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
-								<LinkContainer to="/login" style={{color:'#ff8e43'}}>
+								<LinkContainer
+									to="/login"
+									style={{ color: '#ff8e43' }}
+								>
 									<Nav.Link>
 										<i className="fas fa-user"></i> Sign In
 									</Nav.Link>
 								</LinkContainer>
 							)}
 							{userInfo && (
-								<div style={{color: '#ff8e43  !important'}}>
-									<NavDropdown title="Navigate" id="adminmenu" style={{color:'#ff8e43 !important'}}>
+								<NavDropdown title="Navigate" id="adminmenu">
 									<LinkContainer to="/admin/productlist">
 										<NavDropdown.Item>
 											Products
 										</NavDropdown.Item>
 									</LinkContainer>
-									<LinkContainer to="/admin/orderlist">
+									<LinkContainer to="/">
 										<NavDropdown.Item>
-											Orders
+											Home
 										</NavDropdown.Item>
 									</LinkContainer>
 								</NavDropdown>
-								</div>
-								
 							)}
 						</Nav>
 					</Navbar.Collapse>

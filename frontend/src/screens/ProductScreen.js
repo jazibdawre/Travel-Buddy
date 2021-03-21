@@ -150,15 +150,35 @@ const ProductScreen = ({ history, match }) => {
 													product.attractions &&
 													product.attractions.map(
 														(review) => (
-															<Card style={{ width: '100%	' }}>
-																<Card.Img variant="top" src={require(`../../public/images/${review}.jpg`)} />
+															<Card
+																style={{
+																	width:
+																		'100%	',
+																}}
+															>
+																<Card.Img
+																	variant="top"
+																	src={require(`../../public/images/${review}.jpg`)}
+																/>
 																<Card.Body>
-																	<Card.Title>{ review}</Card.Title>
+																	<Card.Title>
+																		{review}
+																	</Card.Title>
 																	<Card.Text>
-																	Some quick example text to build on the card title and make up the bulk of
-																	the card's content.
+																		Some
+																		quick
+																		example
+																		text to
+																		build on
+																		the card
+																		title
+																		and make
+																		up the
+																		bulk of
+																		the
+																		card's
+																		content.
 																	</Card.Text>
-																
 																</Card.Body>
 															</Card>
 														)
@@ -184,15 +204,35 @@ const ProductScreen = ({ history, match }) => {
 													product.food &&
 													product.food.map(
 														(review) => (
-															<Card style={{ width: '100%	' }}>
-																<Card.Img variant="top" src={require(`../../public/images/${review}.jpg`)} />
+															<Card
+																style={{
+																	width:
+																		'100%	',
+																}}
+															>
+																<Card.Img
+																	variant="top"
+																	src={require(`../../public/images/${review}.jpg`)}
+																/>
 																<Card.Body>
-																	<Card.Title>{ review}</Card.Title>
+																	<Card.Title>
+																		{review}
+																	</Card.Title>
 																	<Card.Text>
-																	Some quick example text to build on the card title and make up the bulk of
-																	the card's content.
+																		Some
+																		quick
+																		example
+																		text to
+																		build on
+																		the card
+																		title
+																		and make
+																		up the
+																		bulk of
+																		the
+																		card's
+																		content.
 																	</Card.Text>
-																	
 																</Card.Body>
 															</Card>
 														)
@@ -218,7 +258,21 @@ const ProductScreen = ({ history, match }) => {
 									</Card.Header>
 									<Accordion.Collapse eventKey="2">
 										<Card.Body>
-											Hello! I'm the body
+											<ListGroup variant="flush">
+												{product &&
+													product.specialities &&
+													product.specialities.map(
+														(speciality) => (
+															<ListGroup.Item
+																key={speciality}
+															>
+																<p>
+																	{speciality}
+																</p>
+															</ListGroup.Item>
+														)
+													)}
+											</ListGroup>
 										</Card.Body>
 									</Accordion.Collapse>
 								</Card>
@@ -232,10 +286,7 @@ const ProductScreen = ({ history, match }) => {
 								justifyContent: 'flex-end',
 							}}
 						>
-							<Weather
-								location={pickUp}
-								name={product.name}
-							/>
+							<Weather location={pickUp} name={product.name} />
 						</Col>
 					</Row>
 					<Row>

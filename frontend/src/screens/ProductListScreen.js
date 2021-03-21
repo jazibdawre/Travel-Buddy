@@ -79,7 +79,7 @@ const ProductListScreen = ({ history, match }) => {
 				</Col>
 				<Col className="text-right">
 					<Button className="my-3" onClick={createProductHandler}>
-						<i className="fas fa-plus"></i> Create Product
+						<i className="fas fa-plus"></i> Create Post
 					</Button>
 				</Col>
 			</Row>
@@ -104,9 +104,8 @@ const ProductListScreen = ({ history, match }) => {
 							<tr>
 								<th>ID</th>
 								<th>NAME</th>
-								<th>PRICE</th>
 								<th>CATEGORY</th>
-								<th>BRAND</th>
+								<th>ADDRESS</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -115,8 +114,8 @@ const ProductListScreen = ({ history, match }) => {
 								<tr key={product._id}>
 									<td>{product._id}</td>
 									<td>{product.name}</td>
-									<td>{product.user.name}</td>
 									<td>{product.category.name}</td>
+									<td>{product.address.country}</td>
 									<td>
 										<LinkContainer
 											to={`/admin/product/${product._id}/edit`}

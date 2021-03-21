@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Form, Button, Row, Col, Card, Accordion } from 'react-bootstrap';
+import {
+	Table,
+	Form,
+	Button,
+	Row,
+	Col,
+	Card,
+	Accordion,
+} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -71,19 +79,18 @@ const ProfileScreen = ({ location, history }) => {
 		history.push(`/admin/product/create`);
 	};
 
-	
 	const products = [
 		{
 			_id: '1',
 			name: 'Mumbai',
 			user: {
-				name: 'Aditya'
+				name: 'Aditya',
 			},
 			category: {
-				name: 'Game'
-			}
-		}
-	]
+				name: 'Game',
+			},
+		},
+	];
 
 	return (
 		<Row>
@@ -156,88 +163,104 @@ const ProfileScreen = ({ location, history }) => {
 					<Message variant="danger">{errorOrders}</Message>
 				) : (
 					<>
-					<Accordion defaultActiveKey="0">
-  <Card>
-    <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="0">
-        Mumbai
-      </Accordion.Toggle>
-    </Card.Header>
-    <Accordion.Collapse eventKey="0">
-											<Card.Body>
-												<div className='container'>
-													Expenses
-												
-					<Button className="my-3 btn-sm align-self-end" onClick={createProductHandler}>
-						<i className="fas fa-plus"></i> Create Product
-					</Button>
-				
-												</div>
-												
-													
-												
-	
-												<Table
-						striped
-						bordered
-						hover
-						responsive
-						className="table-sm"
-					>
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>NAME</th>
-								<th>PRICE</th>
-								<th>CATEGORY</th>
-								<th>BRAND</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							{products.map((product) => (
-								<tr key={product._id}>
-									<td>{product._id}</td>
-									<td>{product.name}</td>
-									<td>{product.user.name}</td>
-									<td>{product.category.name}</td>
-									<td>
-										<LinkContainer
-											to={`/admin/product/${product._id}/edit`}
-										>
+						<Accordion defaultActiveKey="0">
+							<Card>
+								<Card.Header>
+									<Accordion.Toggle
+										as={Button}
+										variant="link"
+										eventKey="0"
+									>
+										Mumbai
+									</Accordion.Toggle>
+								</Card.Header>
+								<Accordion.Collapse eventKey="0">
+									<Card.Body>
+										<div className="container">
+											Expenses
 											<Button
-												variant="light"
-												className="btn-sm"
+												className="ml-3 my-3 btn-sm align-self-end"
+												onClick={createProductHandler}
 											>
-												<i className="fas fa-edit"></i>
+												<i className="fas fa-plus"></i>{' '}
+												Add Expense
 											</Button>
-										</LinkContainer>
-										<Button
-											variant="danger"
-											className="btn-sm"
-											onClick={() => { }
-											}
+										</div>
+
+										<Table
+											striped
+											bordered
+											hover
+											responsive
+											className="table-sm"
 										>
-											<i className="fas fa-trash"></i>
-										</Button>
-									</td>
-								</tr>
-							))}
-						</tbody>
-								</Table></Card.Body>
-    </Accordion.Collapse>
-  </Card>
-  <Card>
-    <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="1">
-        Click me!
-      </Accordion.Toggle>
-    </Card.Header>
-    <Accordion.Collapse eventKey="1">
-      <Card.Body>Hello! I'm another body</Card.Body>
-    </Accordion.Collapse>
-  </Card>
-</Accordion>
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>NAME</th>
+													<th>PRICE</th>
+													<th>CATEGORY</th>
+													<th>BRAND</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{products.map((product) => (
+													<tr key={product._id}>
+														<td>{product._id}</td>
+														<td>{product.name}</td>
+														<td>
+															{product.user.name}
+														</td>
+														<td>
+															{
+																product.category
+																	.name
+															}
+														</td>
+														<td>
+															<LinkContainer
+																to={`/admin/product/${product._id}/edit`}
+															>
+																<Button
+																	variant="light"
+																	className="btn-sm"
+																>
+																	<i className="fas fa-edit"></i>
+																</Button>
+															</LinkContainer>
+															<Button
+																variant="danger"
+																className="btn-sm"
+																onClick={() => {}}
+															>
+																<i className="fas fa-trash"></i>
+															</Button>
+														</td>
+													</tr>
+												))}
+											</tbody>
+										</Table>
+									</Card.Body>
+								</Accordion.Collapse>
+							</Card>
+							{/* <Card>
+								<Card.Header>
+									<Accordion.Toggle
+										as={Button}
+										variant="link"
+										eventKey="1"
+									>
+										Click me!
+									</Accordion.Toggle>
+								</Card.Header>
+								<Accordion.Collapse eventKey="1">
+									<Card.Body>
+										Hello! I'm another body
+									</Card.Body>
+								</Accordion.Collapse>
+							</Card> */}
+						</Accordion>
 					</>
 				)}
 			</Col>

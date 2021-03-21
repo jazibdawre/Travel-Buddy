@@ -6,12 +6,12 @@ const locations = [
     category: 'City',
     location: {
       type: 'Point',
-      coordinates: [72.834705, 18.921836],
+      coordinates: [72.8347, 18.922],
     },
     rating: 4,
     attractions: ['Fair', 'History', 'Beach'],
-    specialities:['Marine Drive', 'Gateway of India'],
-    food: ['Vada Pav'],
+    specialities: ['Marine Drive', 'Gateway of India'],
+    food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -41,8 +41,8 @@ const locations = [
     },
     rating: 4,
     attractions: ['History', 'Art'],
-    specialities:['Shah Jahan', 'One of the seven wonders of the world'],
-    food: ['North Indian'],
+    specialities: ['Shah Jahan', 'One of the seven wonders of the world'],
+    food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -72,8 +72,8 @@ const locations = [
     },
     rating: 4,
     attractions: ['History', 'Mountains'],
-    specialities:['Tallest mountains', 'Cold'],
-    food: ['North Indian'],
+    specialities: ['Tallest mountains', 'Cold'],
+    food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -103,7 +103,7 @@ const locations = [
     },
     rating: 4,
     attractions: ['History', 'Mountains'],
-    specialities:['Long mountain range'],
+    specialities: ['Long mountain range'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
@@ -134,7 +134,7 @@ const locations = [
     },
     rating: 4,
     attractions: ['Beach', 'Art'],
-    specialities:['Longest Beach in the world'],
+    specialities: ['Longest Beach in the world'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
@@ -165,7 +165,7 @@ const locations = [
     },
     rating: 4,
     attractions: ['History', 'Art'],
-    specialities:['Jehangier', 'Artistic Masterpieces'],
+    specialities: ['Jehangier', 'Artistic Masterpieces'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
