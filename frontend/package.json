@@ -10,6 +10,7 @@
     "antd": "^4.13.1",
     "axios": "^0.21.1",
     "cdbreact": "^1.1.0",
+    "google-translate": "^3.0.0",
     "chart.js": "^2.9.4",
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.0.6",

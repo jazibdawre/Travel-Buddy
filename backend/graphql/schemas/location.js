@@ -34,6 +34,7 @@ export const LocationSchema = `
         description: String!
         location: location!
         attractions: [String!]
+        specialities: [String!]
         food: [String!]
         weather: weather!
         reviews: [review!]!
@@ -73,6 +74,7 @@ export const LocationSchema = `
         description: String!
         location: locationInput!
         attractions: [String!]
+        specialities: [String!]
         food: [String!]
         weather: weatherInput!
         reviews: [reviewInput!]!
@@ -88,6 +90,7 @@ export const LocationSchema = `
         description: String!
         location: locationInput!
         attractions: [String!]
+        specialities: [String!]
         food: [String!]
         weather: weatherInput!
         reviews: [reviewInput!]!

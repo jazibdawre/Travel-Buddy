@@ -1,5 +1,7 @@
 import Location from '../../models/locationModel.js';
+import User from '../../models/userModel.js';
 import { admin, loggedin } from '../../utils/verifyUser.js';
+import axios from 'axios';
 
 const createLocation = async (args, req) => {
   try {
@@ -13,6 +15,7 @@ const createLocation = async (args, req) => {
         location: args.locationInput.location,
         weather: args.locationInput.weather,
         attractions: args.locationInput.attractions,
+        specialities: args.locationInput.specialities,
         food: args.locationInput.food,
       });
       const res = await location.save();
@@ -48,6 +51,36 @@ const getLocations = async (args, { req, redis }) => {
     }
   } catch (err) {
     throw err;
+  }
+};
+
+// get all locations
+// cached
+const getmyLocations = async (args, { req, redis }) => {
+  const users = await User.find({});
+  const user_id = 0;
+
+  if (req.user) {
+    user_id = users.findIndex((user) => {
+      return user.id === req.user.id;
+    });
+  }
+
+  const { data } = await axios.post('http://localhost:8000/predict', {
+    user_id,
+  });
+
+  if (data.error == 0) {
+    const locations = await Location.find({}).populate('category');
+
+    const recommendations = data.pred_ids.map((pred_id) => {
+      return locations[pred_id];
+    });
+
+    //console.log(recommendations);
+    return recommendations;
+  } else {
+    throw new Error(data.message);
   }
 };
 
@@ -132,6 +165,7 @@ const updateLocation = async (args, { req, redis }) => {
         location: args.locationInput.location,
         weather: args.locationInput.weather,
         attractions: args.locationInput.attractions,
+        specialities: args.locationInput.specialities,
         food: args.locationInput.food,
       };
 
@@ -222,4 +256,5 @@ export {
   deleteLocation,
   createLocationReview,
   getLocationReviews,
+  getmyLocations,
 };

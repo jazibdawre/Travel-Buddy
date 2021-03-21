@@ -19,6 +19,7 @@ export default buildSchema(`
         getCategories: [Category!]!
         
         getLocations: [Location!]!
+        getmyLocations: [Location!]!
         getLocationByCategory(categoryId: ID!): [Location!]!
         getLocationById(id: ID!): [Location!]!
         deleteLocation(id: ID!): Location!

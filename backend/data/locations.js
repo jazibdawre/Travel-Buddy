@@ -6,11 +6,12 @@ const locations = [
     category: 'City',
     location: {
       type: 'Point',
-      coordinates: [72.8773928, 19.0759899],
+      coordinates: [72.834705, 18.921836],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
-    food: ['Indian'],
+    attractions: ['Fair', 'History', 'Beach'],
+    specialities:['Marine Drive', 'Gateway of India'],
+    food: ['Vada Pav'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -39,8 +40,9 @@ const locations = [
       coordinates: [78.0421, 27.1751],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
-    food: ['Indian'],
+    attractions: ['History', 'Art'],
+    specialities:['Shah Jahan', 'One of the seven wonders of the world'],
+    food: ['North Indian'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -66,11 +68,12 @@ const locations = [
     category: 'Mountains',
     location: {
       type: 'Point',
-      coordinates: [83.9311, 28.5983],
+      coordinates: [83.931062, 28.598316],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
-    food: ['Indian'],
+    attractions: ['History', 'Mountains'],
+    specialities:['Tallest mountains', 'Cold'],
+    food: ['North Indian'],
     weather: {
       note: 'Slightly Sunny',
       temperature: '22 C',
@@ -99,7 +102,8 @@ const locations = [
       coordinates: [77.0667, 10.1667],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
+    attractions: ['History', 'Mountains'],
+    specialities:['Long mountain range'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
@@ -129,7 +133,8 @@ const locations = [
       coordinates: [72.8773928, 19.0759899],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
+    attractions: ['Beach', 'Art'],
+    specialities:['Longest Beach in the world'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',
@@ -159,7 +164,8 @@ const locations = [
       coordinates: [72.8773928, 19.0759899],
     },
     rating: 4,
-    attractions: ['Fair', 'History', 'Art'],
+    attractions: ['History', 'Art'],
+    specialities:['Jehangier', 'Artistic Masterpieces'],
     food: ['Indian'],
     weather: {
       note: 'Slightly Sunny',

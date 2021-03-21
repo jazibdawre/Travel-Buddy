@@ -25,11 +25,11 @@ function Side() {
 	useEffect(() => {
 		var data = JSON.stringify({
 			query: `query getCategories {
-        getCategories {
-            _id
-            name
-        }
-    }`,
+				getCategories {
+					_id
+					name
+				}
+			}`,
 			variables: {},
 		});
 
@@ -70,29 +70,6 @@ function Side() {
 				}`,
 			variables: {},
 		});
-
-		var config1 = {
-			method: 'post',
-			url: 'http://localhost:5000/graphql',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			data: data1,
-		};
-
-		axios(config1)
-			.then(function (response) {
-				let myData = [],
-					myBrands = [];
-				myData = response.data.data.getProducts;
-				for (let i = 1; i < myData.length; i++) {
-					myBrands.push(myData[i].brand);
-				}
-				setBrands(myBrands);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
 	}, []);
 
 	const brandButton = brands.map((brand) => (

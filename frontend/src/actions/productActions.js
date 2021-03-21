@@ -66,7 +66,7 @@ export const listProducts = (keyword = '') => async (dispatch) => {
 				type: PRODUCT_LIST_SUCCESS,
 				payload: data.data.getNearby,
 			});
-		} else {
+		} else if (keyword) {
 			const { data } = await axios.post(
 				'http://localhost:5000/graphql',
 				JSON.stringify({
@@ -96,6 +96,37 @@ export const listProducts = (keyword = '') => async (dispatch) => {
 			dispatch({
 				type: PRODUCT_LIST_SUCCESS,
 				payload: data.data.searchLocation,
+			});
+		} else {
+			const { data } = await axios.post(
+				'http://localhost:5000/graphql',
+				JSON.stringify({
+					query: `{
+						getmyLocations {
+						_id
+						name
+						image
+						category {
+							_id
+							name
+						}
+						description
+						address {
+							state
+							country
+						}
+					}
+				}
+				`,
+				}),
+				config
+			);
+
+			console.log(data);
+
+			dispatch({
+				type: PRODUCT_LIST_SUCCESS,
+				payload: data.data.getmyLocations,
 			});
 		}
 	} catch (error) {
