@@ -1,7 +1,7 @@
 import Location from '../../models/locationModel.js';
 import User from '../../models/userModel.js';
 import { admin, loggedin } from '../../utils/verifyUser.js';
-import { axios } from 'axios';
+import axios from 'axios';
 
 const createLocation = async (args, req) => {
   try {
@@ -58,27 +58,29 @@ const getLocations = async (args, { req, redis }) => {
 // cached
 const getmyLocations = async (args, { req, redis }) => {
   const users = await User.find({});
+  const user_id = 0;
 
-  const response = await axios({
-    method: 'post',
-    url: 'localhost:8000/predict',
-    data: {
-      user_id: users.findIndex((user) => {
-        return user.id === req.user.id;
-      }),
-    },
+  if (req.user) {
+    user_id = users.findIndex((user) => {
+      return user.id === req.user.id;
+    });
+  }
+
+  const { data } = await axios.post('http://localhost:8000/predict', {
+    user_id,
   });
 
-  if (response.error == 0) {
-    const locations = await Location.find({});
+  if (data.error == 0) {
+    const locations = await Location.find({}).populate('category');
 
-    const recommendations = response.pred_ids.filter((pred_id) => {
+    const recommendations = data.pred_ids.map((pred_id) => {
       return locations[pred_id];
     });
 
+    //console.log(recommendations);
     return recommendations;
   } else {
-    throw new Error(response.message);
+    throw new Error(data.message);
   }
 };
 
