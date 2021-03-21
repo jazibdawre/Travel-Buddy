@@ -10,6 +10,7 @@ import { listProductDetails, createProduct } from '../actions/productActions';
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 import MyMap from '../components/map/map3';
 import Create from '../components/Create';
+import Convert from '../components/Convert';
 
 const Expense = ({ match, history }) => {
 	const pickUpInit = { address: '', lat: 0, lng: 0 };
@@ -111,18 +112,6 @@ const Expense = ({ match, history }) => {
 										}
 									></Form.Control>
                                 </Form.Group>
-                                
-                                <Form.Group controlId="Amount">
-									<Form.Label>Amount</Form.Label>
-									<Form.Control
-										type="Number"
-										placeholder="Enter amount"
-										value={amount}
-										onChange={(e) =>
-											setAmount(e.target.value)
-										}
-									></Form.Control>
-								</Form.Group>
 
 
 								<Form.Group controlId="category">
@@ -147,6 +136,7 @@ const Expense = ({ match, history }) => {
 											setDescription(e.target.value)
 										}
 									></Form.Control>
+									<Convert />
 								</Form.Group>
 
 								<Button type="submit" variant="primary">

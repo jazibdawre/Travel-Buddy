@@ -26,6 +26,8 @@ const ProductEditScreen = ({ match, history }) => {
 	const [category, setCategory] = useState('');
 	const [countInStock, setCountInStock] = useState(0);
 	const [description, setDescription] = useState('');
+	const [address, setAddress] = useState('');
+
 	const [uploading, setUploading] = useState(false);
 
 	const dispatch = useDispatch();
@@ -131,18 +133,6 @@ const ProductEditScreen = ({ match, history }) => {
 									{uploading && <Loader />}
 								</Form.Group>
 
-								<Form.Group controlId="brand">
-									<Form.Label>Brand</Form.Label>
-									<Form.Control
-										type="text"
-										placeholder="Enter brand"
-										value={brand}
-										onChange={(e) =>
-											setBrand(e.target.value)
-										}
-									></Form.Control>
-								</Form.Group>
-
 								<Form.Group controlId="category">
 									<Form.Label>Category</Form.Label>
 									<Form.Control
@@ -155,9 +145,23 @@ const ProductEditScreen = ({ match, history }) => {
 									></Form.Control>
 								</Form.Group>
 
+								<Form.Group controlId="address">
+									<Form.Label>Address</Form.Label>
+									<Form.Control
+										as='textarea'
+										type="text"
+										placeholder="Enter Address"
+										value={address}
+										onChange={(e) =>
+											setAddress(e.target.value)
+										}
+									></Form.Control>
+								</Form.Group>
+
 								<Form.Group controlId="description">
 									<Form.Label>Description</Form.Label>
 									<Form.Control
+										as='textarea'
 										type="text"
 										placeholder="Enter description"
 										value={description}
@@ -188,18 +192,10 @@ const ProductEditScreen = ({ match, history }) => {
 						</div>
 						<br />
 						<Form.Group controlId="name">
-							<Form.Label>Item's Location</Form.Label>
+							<Form.Label>Location</Form.Label>
 							<Form.Control
 								type="name"
 								value={pickUp.address}
-								disabled
-							></Form.Control>
-						</Form.Group>
-						<Form.Group controlId="name">
-							<Form.Label>Your Location</Form.Label>
-							<Form.Control
-								type="name"
-								value={drop.address}
 								disabled
 							></Form.Control>
 						</Form.Group>
