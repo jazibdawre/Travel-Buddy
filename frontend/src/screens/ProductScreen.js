@@ -324,6 +324,14 @@ const ProductScreen = ({ history, match }) => {
 								)}
 							</ListGroup.Item>
 						</Col>
+						<Col md={6}>
+							<h3 style={{textAlign:'center',color:"#FF8E43"}}>Corona Situation</h3>
+						    <PieChartBuilder />
+							 <h4>Green:Confirmed Cases</h4>
+							 <h4>Orange:Recoverd Cases</h4>
+							 <h4>Blue:Deaths</h4>
+							 <h4>Gray:Critical Cases</h4>
+						</Col>
 					</Row>
 				</>
 			)}
