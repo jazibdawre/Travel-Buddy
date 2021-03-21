@@ -1,7 +1,9 @@
 import Location from '../../models/locationModel.js';
 import User from '../../models/userModel.js';
 import { admin, loggedin } from '../../utils/verifyUser.js';
-import { axios } from 'axios';
+// import { axios } from 'axios';
+import pkg from 'axios';
+const { axios } = pkg;
 
 const createLocation = async (args, req) => {
   try {
