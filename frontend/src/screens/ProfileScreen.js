@@ -76,7 +76,7 @@ const ProfileScreen = ({ location, history }) => {
 
 	const createProductHandler = () => {
 		//dispatch(createProduct());
-		history.push(`/admin/product/create`);
+		history.push(`/expense/create`);
 	};
 
 	const products = [
