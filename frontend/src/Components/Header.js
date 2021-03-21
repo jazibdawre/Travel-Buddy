@@ -125,7 +125,7 @@ const Header = () => {
 
 						<Nav className="ml-auto">
 							{/* <LinkContainer to="/cart"> */}
-							<Nav.Link onClick={() => handleDonate()} style={{color:'#ff7d27'}}>
+							<Nav.Link onClick={() => handleDonate()} style={{color:'#ff8e43'}}>
 								<i className="fas fa-donate"></i> Donate
 							</Nav.Link>
 							{/* </LinkContainer> */}
@@ -134,8 +134,9 @@ const Header = () => {
 								<NavDropdown
 									title={userInfo.name}
 									id="username"
+									style={{color: '#ff8e43 '}}
 								>
-									<LinkContainer to="/profile" style={{color: 'white'}}>
+									<LinkContainer to="/profile" style={{color: '#ff8e43 '}}>
 										<NavDropdown.Item>
 											Profile
 										</NavDropdown.Item>
@@ -145,14 +146,15 @@ const Header = () => {
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
-								<LinkContainer to="/login" style={{color:'#ff7d27'}}>
+								<LinkContainer to="/login" style={{color:'#ff8e43'}}>
 									<Nav.Link>
 										<i className="fas fa-user"></i> Sign In
 									</Nav.Link>
 								</LinkContainer>
 							)}
 							{userInfo && (
-								<NavDropdown title="Navigate" id="adminmenu" style={{color: 'white'}}>
+								<div style={{color: '#ff8e43  !important'}}>
+									<NavDropdown title="Navigate" id="adminmenu" style={{color:'#ff8e43 !important'}}>
 									<LinkContainer to="/admin/productlist">
 										<NavDropdown.Item>
 											Products
@@ -164,6 +166,8 @@ const Header = () => {
 										</NavDropdown.Item>
 									</LinkContainer>
 								</NavDropdown>
+								</div>
+								
 							)}
 						</Nav>
 					</Navbar.Collapse>

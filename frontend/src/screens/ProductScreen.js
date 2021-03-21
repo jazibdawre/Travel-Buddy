@@ -27,6 +27,7 @@ import axios from 'axios';
 import MyMap from '../components/map/map2';
 import ViewApp from '../components/ViewApp';
 import Weather from '../components/Weather';
+import PieChartBuilder from '../components/PieChartBuilder';
 
 const myAppName = 'Travel Buddy';
 const myDescription = '';
@@ -120,9 +121,7 @@ const ProductScreen = ({ history, match }) => {
 							</ListGroup>
 						</Col>
 						<Col md={3}>
-							<Card>
-								<ListGroup variant="flush"></ListGroup>
-							</Card>
+							<h4>Location</h4>
 							<br />
 							<Card>
 								<ListGroup variant="flush">
@@ -151,13 +150,17 @@ const ProductScreen = ({ history, match }) => {
 													product.attractions &&
 													product.attractions.map(
 														(review) => (
-															<ListGroup.Item
-																key={review}
-															>
-																<strong>
-																	{review}
-																</strong>
-															</ListGroup.Item>
+															<Card style={{ width: '100%	' }}>
+																<Card.Img variant="top" src={require(`../../public/images/${review}.jpg`)} />
+																<Card.Body>
+																	<Card.Title>{ review}</Card.Title>
+																	<Card.Text>
+																	Some quick example text to build on the card title and make up the bulk of
+																	the card's content.
+																	</Card.Text>
+																
+																</Card.Body>
+															</Card>
 														)
 													)}
 											</ListGroup>
@@ -181,13 +184,17 @@ const ProductScreen = ({ history, match }) => {
 													product.food &&
 													product.food.map(
 														(review) => (
-															<ListGroup.Item
-																key={review}
-															>
-																<strong>
-																	{review}
-																</strong>
-															</ListGroup.Item>
+															<Card style={{ width: '100%	' }}>
+																<Card.Img variant="top" src={require(`../../public/images/${review}.jpg`)} />
+																<Card.Body>
+																	<Card.Title>{ review}</Card.Title>
+																	<Card.Text>
+																	Some quick example text to build on the card title and make up the bulk of
+																	the card's content.
+																	</Card.Text>
+																	
+																</Card.Body>
+															</Card>
 														)
 													)}
 											</ListGroup>
@@ -225,7 +232,10 @@ const ProductScreen = ({ history, match }) => {
 								justifyContent: 'flex-end',
 							}}
 						>
-							<Weather location={pickUp} name={product.name} />
+							<Weather
+								location={pickUp}
+								name={product.name}
+							/>
 						</Col>
 					</Row>
 					<Row>
