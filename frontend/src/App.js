@@ -71,31 +71,8 @@ const App = () => {
 						component={HomeScreen}
 						exact
 					/>
-					<Route
-						path="/search/:filter"
-						component={HomeScreen}
-						exact
-					/>
-					<Route
-						path="/page/:pageNumber"
-						component={HomeScreen}
-						exact
-					/>
-					<Route
-						path="/search/:keyword/page/:pageNumber"
-						component={HomeScreen}
-						exact
-					/>
-					<Route
-						path='/translate'
-						component={Translate}
-						exact
-					/>
-					<Route
-						path='/expense/create'
-						component={Expense}
-						exact
-					/>
+					<Route path="/translate" component={Translate} exact />
+					<Route path="/expense/create" component={Expense} exact />
 				</Container>
 			</main>
 			<Footer />

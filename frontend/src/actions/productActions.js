@@ -170,6 +170,7 @@ export const listProductDetails = (id) => async (dispatch) => {
 					}
 					food
 					attractions
+					specialities
 					location {
 						coordinates
 					}

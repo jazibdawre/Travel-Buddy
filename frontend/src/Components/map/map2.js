@@ -32,7 +32,7 @@ function MyMap(props) {
 		<React.Fragment>
 			<Map
 				center={[latitude, longitude]}
-				zoom={15}
+				zoom={12}
 				ref={saveMap}
 				zoomControl={false}
 			>

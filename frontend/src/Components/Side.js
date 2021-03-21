@@ -174,7 +174,7 @@ function Side() {
 									variant="light"
 									eventKey="2"
 								>
-									Brands
+									Other Filters
 								</Accordion.Toggle>
 							</Card.Header>
 							<Accordion.Collapse eventKey="2">

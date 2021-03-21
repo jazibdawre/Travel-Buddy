@@ -17,7 +17,10 @@ const Product = ({ product }) => {
 					</Card.Title>
 				</Link>
 
-				<Card.Text as="div">{product.category.name}</Card.Text>
+				<Card.Text as="div">
+					<italic>{product.category.name}</italic>
+				</Card.Text>
+				<div style={{ marginTop: '5px' }}></div>
 
 				<Card.Text as="div">
 					Location: {product.address.state},{product.address.country}

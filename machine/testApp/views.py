@@ -31,7 +31,7 @@ def predictions(request):
             user = np.array([user_id for i in range(len(course_arr))])
             pred = model.predict([course_arr, user])
             pred = pred.reshape(-1) #reshape to single dimension
-            pred_ids = (-pred).argsort()[0:5]   #Top 5 courses
+            pred_ids = (-pred).argsort()[0:4]   #Top 4 courses
             
             predictions = {
                 'error' : '0',
