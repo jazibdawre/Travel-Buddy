@@ -82,12 +82,16 @@ const ProfileScreen = ({ location, history }) => {
 	const products = [
 		{
 			_id: '1',
-			name: 'Mumbai',
+			name: 'Carte Resto',
 			user: {
-				name: 'Aditya',
+				name: '',
 			},
 			category: {
 				name: 'Game',
+			},
+			amount: {
+				curr: 'USD',
+				amt: 10,
 			},
 		},
 	];
@@ -156,7 +160,7 @@ const ProfileScreen = ({ location, history }) => {
 				)}
 			</Col>
 			<Col md={9}>
-				<h2>My Orders</h2>
+				<h2>My Expenses</h2>
 				{false ? (
 					<Loader />
 				) : false ? (
@@ -197,10 +201,12 @@ const ProfileScreen = ({ location, history }) => {
 											<thead>
 												<tr>
 													<th>ID</th>
-													<th>NAME</th>
-													<th>PRICE</th>
-													<th>CATEGORY</th>
-													<th>BRAND</th>
+													<th>Expense</th>
+													<th>Amount</th>
+													<th>Currency</th>
+													<th>INR</th>
+
+													<th>Edit</th>
 													<th></th>
 												</tr>
 											</thead>
@@ -210,14 +216,15 @@ const ProfileScreen = ({ location, history }) => {
 														<td>{product._id}</td>
 														<td>{product.name}</td>
 														<td>
-															{product.user.name}
+															{product.amount.amt}
 														</td>
 														<td>
 															{
-																product.category
-																	.name
+																product.amount
+																	.curr
 															}
 														</td>
+														<td>72.44</td>
 														<td>
 															<LinkContainer
 																to={`/admin/product/${product._id}/edit`}
@@ -244,22 +251,6 @@ const ProfileScreen = ({ location, history }) => {
 									</Card.Body>
 								</Accordion.Collapse>
 							</Card>
-							{/* <Card>
-								<Card.Header>
-									<Accordion.Toggle
-										as={Button}
-										variant="link"
-										eventKey="1"
-									>
-										Click me!
-									</Accordion.Toggle>
-								</Card.Header>
-								<Accordion.Collapse eventKey="1">
-									<Card.Body>
-										Hello! I'm another body
-									</Card.Body>
-								</Accordion.Collapse>
-							</Card> */}
 						</Accordion>
 					</>
 				)}

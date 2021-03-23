@@ -80,9 +80,9 @@ const ProductEditScreen = ({ match, history }) => {
 				category,
 				description,
 				location: {
-          type: "Point",
-          coordinates: [19.076, 72.8777],
-        },
+					type: 'Point',
+					coordinates: [19.076, 72.8777],
+				},
 			})
 		);
 	};
@@ -95,7 +95,7 @@ const ProductEditScreen = ({ match, history }) => {
 			<Container>
 				<Row className="justify-content-md-left">
 					<Col xs={12} md={6}>
-						<h1>Edit Product</h1>
+						<h1>Create/Edit Location</h1>
 						{loadingUpdate && <Loader />}
 						{errorUpdate && (
 							<Message variant="danger">{errorUpdate}</Message>
@@ -148,7 +148,7 @@ const ProductEditScreen = ({ match, history }) => {
 								<Form.Group controlId="address">
 									<Form.Label>Address</Form.Label>
 									<Form.Control
-										as='textarea'
+										as="textarea"
 										type="text"
 										placeholder="Enter Address"
 										value={address}
@@ -161,7 +161,7 @@ const ProductEditScreen = ({ match, history }) => {
 								<Form.Group controlId="description">
 									<Form.Label>Description</Form.Label>
 									<Form.Control
-										as='textarea'
+										as="textarea"
 										type="text"
 										placeholder="Enter description"
 										value={description}
@@ -199,6 +199,7 @@ const ProductEditScreen = ({ match, history }) => {
 								disabled
 							></Form.Control>
 						</Form.Group>
+						{/* THIS */}
 						<Create />
 					</Col>
 				</Row>

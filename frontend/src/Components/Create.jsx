@@ -41,7 +41,7 @@ function Create() {
   return (
     <Form onSubmit={onSubmit}>
       <Form.Group controlId="">
-        <Form.Label>Enter the question to be added</Form.Label>
+        <Form.Label>Enter the attractions to be added</Form.Label>
 
         <Form.Control
           as="textarea"
@@ -49,16 +49,6 @@ function Create() {
           onChange={handleChange}
           value={textContent}
         ></Form.Control>
-        <Form.Control as="select" custom onChange={handleSelect}>
-          <option value="select">Select</option>
-          <option value="text">Text</option>
-          <option value="text-area">Text-Area</option>
-          <option value="email">Email</option>
-          <option value="passwords">Passwords</option>
-          <option value="file">File</option>
-          <option value="date">Date</option>
-          <option value="time">Time</option>
-        </Form.Control>
       </Form.Group>
       <Button variant='primary' onClick={onClick}>
         Add
